@@ -96,10 +96,10 @@ app.put("/documents/:id", async (req, res) => {
         await pool.query(
 
             `UPDATE documents
-            SET name=$1,
-                desc=$2,
-                status=$3
-            WHERE id=$4`,
+             SET name=$1,
+                 description=$2,
+                 status=$3
+             WHERE id=$4`,
 
             [
                 req.body.name,
