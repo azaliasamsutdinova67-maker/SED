@@ -1,5 +1,3 @@
-require("dotenv").config();
-
 const express = require("express");
 const path = require("path");
 const { Pool } = require("pg");
@@ -14,17 +12,13 @@ app.use(
     )
 );
 
-/* POSTGRES */
+/* PostgreSQL */
 
 const pool = new Pool({
-
-    connectionString:
-        process.env.DATABASE_URL,
-
+    connectionString: process.env.DATABASE_URL,
     ssl: {
         rejectUnauthorized: false
     }
-
 });
 
 /* GET */
@@ -59,14 +53,10 @@ app.post("/documents", async (req, res) => {
         const result =
             await pool.query(
 
-                `
-                INSERT INTO documents
+                `INSERT INTO documents
                 (name, desc, status, date)
-
                 VALUES ($1, $2, $3, $4)
-
-                RETURNING *
-                `,
+                RETURNING *`,
 
                 [
                     req.body.name,
@@ -97,16 +87,11 @@ app.put("/documents/:id", async (req, res) => {
 
         await pool.query(
 
-            `
-            UPDATE documents
-
-            SET
-                name=$1,
+            `UPDATE documents
+            SET name=$1,
                 desc=$2,
                 status=$3
-
-            WHERE id=$4
-            `,
+            WHERE id=$4`,
 
             [
                 req.body.name,
@@ -139,10 +124,7 @@ app.delete("/documents/:id", async (req, res) => {
 
         await pool.query(
 
-            `
-            DELETE FROM documents
-            WHERE id=$1
-            `,
+            "DELETE FROM documents WHERE id=$1",
 
             [req.params.id]
 
@@ -167,19 +149,16 @@ app.delete("/documents/:id", async (req, res) => {
 app.get("/", (req, res) => {
 
     res.sendFile(
-
         path.join(
             __dirname,
             "public",
             "login.html"
         )
-
     );
 
 });
 
-const PORT =
-    process.env.PORT || 3000;
+const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, "0.0.0.0", () => {
 
