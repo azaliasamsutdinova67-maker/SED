@@ -60,7 +60,7 @@ app.post("/documents", async (req, res) => {
         const result =
             await pool.query(
                 `INSERT INTO documents
-                (name, description, status, date)
+                (name, desc, status, date)
                 VALUES ($1, $2, $3, $4)
                 RETURNING *`,
     
@@ -97,7 +97,7 @@ app.put("/documents/:id", async (req, res) => {
 
             `UPDATE documents
              SET name=$1,
-                 description=$2,
+                 desc=$2,
                  status=$3
              WHERE id=$4`,
 
