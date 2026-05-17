@@ -29,13 +29,17 @@ function logout(){
 
 async function saveDocument(){
 
+    console.log("🚀 saveDocument() вызван");
+
     const name =
         document.getElementById("docName").value;
 
     const desc =
         document.getElementById("docDesc").value;
 
-    await fetch("/documents", {
+    console.log("📦 отправка:", { name, desc });
+
+    const response = await fetch("/documents", {
 
         method:"POST",
 
@@ -44,19 +48,17 @@ async function saveDocument(){
         },
 
         body:JSON.stringify({
-
-            name:name,
-            desc:desc
-
+            name,
+            desc
         })
 
     });
 
+    console.log("📥 response:", await response.json());
+
     alert("Документ создан");
 
-    window.location.href =
-        "created.html";
-
+    window.location.href = "created.html";
 }
 
 /* СОЗДАННЫЕ */
