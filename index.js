@@ -52,6 +52,9 @@ app.get("/documents", async (req, res) => {
 
 app.post("/documents", async (req, res) => {
 
+    console.log("📩 POST /documents вызван");
+    console.log("📦 req.body =", req.body);
+
     try{
 
         const result =
@@ -71,10 +74,13 @@ app.post("/documents", async (req, res) => {
 
             );
 
+        console.log("✅ INSERT SUCCESS:", result.rows[0]);
+
         res.json(result.rows[0]);
 
     } catch(err){
 
+        console.log("❌ POST ERROR:");
         console.log(err);
 
         res.status(500).json(err);
