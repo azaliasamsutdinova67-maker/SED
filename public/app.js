@@ -131,7 +131,7 @@ async function showCompletedDocuments(){
 
             <td>${doc.name}</td>
 
-            <td>${doc.desc}</td>
+            <td>${doc.description}</td>
 
             <td>${doc.date}</td>
 
@@ -194,7 +194,7 @@ function renderDocs(
 
             <td>${doc.name}</td>
 
-            <td>${doc.desc}</td>
+            <td>${doc.description}</td>
 
             <td>${doc.date}</td>
 
@@ -292,7 +292,7 @@ async function moveToWork(id){
         body:JSON.stringify({
 
             name:doc.name,
-            desc:doc.desc,
+            desc:doc.description,
             status:"В работе"
 
         })
@@ -327,7 +327,7 @@ async function moveToCompleted(id){
         body:JSON.stringify({
 
             name:doc.name,
-            desc:doc.desc,
+            desc:doc.description,
             status:"Завершено"
 
         })
@@ -374,7 +374,7 @@ async function editDocument(id){
     const newDesc =
         prompt(
             "Описание",
-            doc.desc
+            doc.description
         );
 
     await fetch(`/documents/${id}`, {
