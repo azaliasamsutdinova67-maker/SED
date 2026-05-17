@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>СЭД</title>
+
+<link rel="stylesheet" href="style.css">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+
+<script>
+
+if(localStorage.getItem("auth") !== "true"){
+
+    window.location.href = "login.html";
+
+}
+
+</script>
+
+</head>
+
+<body>
+
+<div class="top-header">
+
+    <div class="top-left">
+
+        <i class="fa-solid fa-folder"></i>
+
+        <div class="system-title">
+            Система электронного документооборота
+        </div>
+
+    </div>
+
+    <div class="top-right">
+
+        <span id="userInfo"></span>
+
+        <button
+        class="logout-btn"
+        onclick="logout()">
+
+            Выйти
+
+        </button>
+
+    </div>
+
+</div>
+
+<div class="wrapper">
+
+    <div class="sidebar">
+
+        <div class="sidebar-section">
+
+            <div class="sidebar-title">
+                Входящие задания
+            </div>
+
+            <a href="work.html">
+                В работе
+            </a>
+
+            <a href="completed.html">
+                Завершено
+            </a>
+
+            <a href="control.html">
+                На контроле
+            </a>
+
+        </div>
+
+        <div class="sidebar-section">
+
+            <div class="sidebar-title">
+                Исходящие задания
+            </div>
+
+            <a href="delegated.html">
+                Делегировано
+            </a>
+
+            <a href="overdue.html">
+                Просрочено
+            </a>
+
+        </div>
+
+        <div class="sidebar-section">
+
+            <div class="sidebar-title">
+                Мои документы
+            </div>
+
+            <a href="created.html">
+                В создании
+            </a>
+
+            <a href="approval.html">
+                В согласовании
+            </a>
+
+            <a href="signed.html">
+                Подписан
+            </a>
+
+            <a href="ready.html">
+                Готов
+            </a>
+
+        </div>
+
+        <div class="sidebar-section">
+
+            <div class="sidebar-title">
+                Поиск
+            </div>
+
+            <a href="search.html">
+                Поиск документов
+            </a>
+
+        </div>
+
+    </div>
+
+    <div class="content">
+
+        <div class="page-box">
+
+            <h2>
+                Главное меню
+            </h2>
+
+            <br>
+
+            <button
+            class="save-btn"
+            onclick="window.location.href='create.html'">
+
+                Создать карточку документа
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="app.js"></script>
+
+</body>
+</html>

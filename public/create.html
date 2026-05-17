@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Создание документа</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="top-header">
+
+    <div class="top-left">
+
+        <div class="system-title">
+            Система электронного документооборота
+        </div>
+
+    </div>
+
+</div>
+
+<div class="content">
+
+    <div class="page-box">
+
+        <button
+        class="back-btn"
+        onclick="window.location.href='index.html'">
+
+            ← Назад в главное меню
+
+        </button>
+
+        <h2>Создание карточки документа</h2>
+
+        <br>
+
+        <div class="form-row">
+            <input
+            type="text"
+            id="docName"
+            placeholder="Название документа">
+        </div>
+
+        <div class="form-row">
+            <textarea
+            id="docDesc"
+            placeholder="Описание"></textarea>
+        </div>
+
+        <button
+        class="save-btn"
+        onclick="saveDocument()">
+
+            СОХРАНИТЬ
+
+        </button>
+
+    </div>
+
+</div>
+
+<script src="app.js"></script>
+
+</body>
+</html>

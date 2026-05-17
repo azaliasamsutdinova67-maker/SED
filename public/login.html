@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Авторизация</title>
+
+<link rel="stylesheet" href="style.css">
+
+<style>
+
+.login-page{
+    width:100%;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:#dfe7e8;
+}
+
+.login-box{
+    width:400px;
+    background:white;
+    border:1px solid #cfcfcf;
+    padding:40px;
+}
+
+.login-title{
+    font-size:22px;
+    margin-bottom:25px;
+    color:#3d5960;
+}
+
+.login-box input{
+    width:100%;
+    margin-bottom:15px;
+    padding:10px;
+    border:1px solid #ccc;
+}
+
+.login-btn{
+    width:100%;
+    background:#6fa5a6;
+    color:white;
+    border:none;
+    padding:10px;
+    cursor:pointer;
+}
+
+.error{
+    color:red;
+    font-size:12px;
+    margin-top:10px;
+}
+
+.demo{
+    margin-top:20px;
+    font-size:12px;
+    color:#666;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="login-page">
+
+    <div class="login-box">
+
+        <div class="login-title">
+            Вход в систему
+        </div>
+
+        <input type="text" id="login" placeholder="Логин">
+
+        <input type="password" id="password" placeholder="Пароль">
+
+        <button class="login-btn" onclick="login()">
+            ВОЙТИ
+        </button>
+
+        <div class="error" id="error"></div>
+
+        <div class="demo">
+            <b>Администратор:</b><br>
+            username / password
+            <br><br>
+
+            <b>Пользователь:</b><br>
+            username / password
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+const users = [
+    {
+        login:"username",
+        password:"password",
+        role:"Администратор"
+    },
+    {
+        login:"username",
+        password:"password",
+        role:"Пользователь"
+    }
+];
+
+function login(){
+
+    const loginValue =
+        document.getElementById("login").value;
+
+    const passwordValue =
+        document.getElementById("password").value;
+
+    const foundUser = users.find(user =>
+        user.login === loginValue &&
+        user.password === passwordValue
+    );
+
+    if(foundUser){
+
+        localStorage.setItem("auth","true");
+
+        localStorage.setItem(
+            "role",
+            foundUser.role
+        );
+
+        localStorage.setItem(
+            "username",
+            foundUser.login
+        );
+
+        window.location.href = "index.html";
+
+    } else {
+
+        document.getElementById("error").innerText =
+            "Неверный логин или пароль";
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>

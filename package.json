@@ -1,0 +1,16 @@
+{
+  "name": "doc-system",
+  "version": "1.0.0",
+  "description": "Система электронного документооборота",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "body-parser": "^2.2.2",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^4.22.2",
+    "pg": "^8.20.0"
+  }
+}
