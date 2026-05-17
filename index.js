@@ -59,19 +59,17 @@ app.post("/documents", async (req, res) => {
 
         const result =
             await pool.query(
-
                 `INSERT INTO documents
-                (name, desc, status, date)
+                (name, description, status, date)
                 VALUES ($1, $2, $3, $4)
                 RETURNING *`,
-
+    
                 [
                     req.body.name,
                     req.body.desc,
                     "В создании",
                     new Date().toLocaleDateString()
                 ]
-
             );
 
         console.log("✅ INSERT SUCCESS:", result.rows[0]);
