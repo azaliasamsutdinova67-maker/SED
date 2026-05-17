@@ -21,6 +21,10 @@ const pool = new Pool({
     }
 });
 
+pool.connect()
+  .then(() => console.log("✅ DB CONNECTED"))
+  .catch(err => console.log("❌ DB ERROR", err));
+
 /* GET */
 
 app.get("/documents", async (req, res) => {
@@ -157,6 +161,8 @@ app.get("/", (req, res) => {
     );
 
 });
+
+
 
 const PORT = process.env.PORT || 3000;
 
